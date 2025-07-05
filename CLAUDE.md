@@ -16,11 +16,13 @@ This is an MCP (Model Context Protocol) server for calling Gemini CLI. The proje
 ## Common Commands
 
 ### Setup
+
 ```bash
 mise run setup  # Initial project setup (runs npm ci and uv sync)
 ```
 
 ### Development
+
 ```bash
 mise run format  # Format code with ruff and dprint/prettier
 mise run lint    # Lint Python, markdown, YAML files and spell check
@@ -28,6 +30,7 @@ mise run test    # Run pytest tests in verbose mode
 ```
 
 ### Maintenance
+
 ```bash
 mise run clean   # Clean node_modules and .venv
 mise run update  # Update dependencies
@@ -58,6 +61,7 @@ mise run update  # Update dependencies
 ## CI/CD
 
 The project uses GitHub Actions for:
+
 - Code formatting checks (dprint, prettier)
 - Spell checking (cspell)
 - Python linting (ruff)
@@ -71,6 +75,7 @@ The project uses GitHub Actions for:
 ## Running the MCP Server
 
 ### Development Mode
+
 ```bash
 # Run the server directly
 python -m mcp_gemini_cli
@@ -80,11 +85,13 @@ uv run mcp dev mcp_gemini_cli/server.py
 ```
 
 ### Dependencies
+
 - **External**: Requires Gemini CLI to be installed and configured
 - **Python**: FastMCP framework (`mcp[cli]>=1.0.0`)
 
 ## Available Tools
 
 The server provides two MCP tools:
+
 - `call_gemini(prompt, model)`: Send a prompt to Gemini CLI with specified model
 - `list_gemini_models()`: List available Gemini models

@@ -3,12 +3,14 @@
 ## Technologies Used
 
 ### Core Technologies
+
 - **Python 3.11+**: Required for modern async features
 - **FastMCP**: MCP server framework (`mcp[cli]>=1.0.0`)
 - **asyncio**: For non-blocking subprocess calls
 - **subprocess**: For CLI interaction
 
 ### Development Tools
+
 - **uv**: Python package manager (configured in mise.toml)
 - **mise**: Environment and tool management
 - **ruff**: Code linting and formatting
@@ -18,6 +20,7 @@
 ### Development Setup
 
 #### Environment Management
+
 ```bash
 # Install mise for environment management
 mise install
@@ -25,6 +28,7 @@ mise run setup    # Install dependencies
 ```
 
 #### Package Management
+
 ```bash
 # Install dependencies
 uv sync
@@ -34,6 +38,7 @@ uv add package-name
 ```
 
 #### Development Commands
+
 ```bash
 # Format code
 mise run format
@@ -51,15 +56,18 @@ mise run clean
 ## Technical Constraints
 
 ### Python Version
+
 - **Minimum**: Python 3.11
 - **Reason**: Required for modern async features and FastMCP
 
 ### Dependencies
+
 - **Minimal**: Only `mcp[cli]` required
 - **CLI Support**: `[cli]` extra for command-line features
 - **Testing**: Development dependencies for testing
 
 ### External Dependencies
+
 - **Gemini CLI**: Must be installed separately
 - **PATH**: Gemini CLI must be in system PATH
 - **Authentication**: Gemini CLI must be configured with API keys
@@ -67,6 +75,7 @@ mise run clean
 ## Tool Usage Patterns
 
 ### MCP Server Operations
+
 ```bash
 # Development mode
 python -m mcp_gemini_cli
@@ -79,6 +88,7 @@ uv run mcp install mcp_gemini_cli/server.py
 ```
 
 ### Testing Patterns
+
 ```python
 # Async test with mocking
 @pytest.mark.asyncio
@@ -90,6 +100,7 @@ async def test_function():
 ```
 
 ## Project Structure
+
 ```
 mcp-gemini-cli/
 ├── mcp_gemini_cli/          # Main package
@@ -107,17 +118,20 @@ mcp-gemini-cli/
 ## Configuration Files
 
 ### pyproject.toml
+
 - Python project metadata
 - Dependencies specification
 - Tool configuration (ruff, pytest)
 - Build system configuration
 
 ### mise.toml
+
 - Environment management
 - Development tasks
 - Tool versions
 
 ## Performance Considerations
+
 - **Async Operations**: Non-blocking CLI calls
 - **Error Handling**: Fast failure with clear messages
 - **Resource Usage**: Minimal memory footprint

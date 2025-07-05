@@ -3,6 +3,7 @@
 ## What Works ✅
 
 ### Core Implementation
+
 - **MCP Server**: FastMCP-based server successfully created
 - **Tools Implementation**: Two functional tools implemented:
   - `call_gemini(prompt, model)`: Calls Gemini CLI with specified prompt and model
@@ -11,27 +12,32 @@
 - **Async Operations**: Non-blocking subprocess calls work correctly
 
 ### Package Structure
+
 - **Python Package**: Proper package structure with `__init__.py`
 - **Entry Point**: `__main__.py` allows module execution via `python -m mcp_gemini_cli`
 - **Dependencies**: Clean dependency management with `mcp[cli]`
 
 ### Testing
+
 - **Test Suite**: Basic test coverage with async support
 - **Mocking**: Proper mocking of subprocess calls
 - **Error Scenarios**: Tests for both success and failure cases
 
 ### Development Setup
+
 - **Environment**: mise and uv integration working
 - **Code Quality**: ruff configuration and formatting
 - **Project Structure**: Clean, maintainable code organization
 
 ## What's Left to Build
+
 **Status: COMPLETE** - All planned features implemented
 
 ### Optional Enhancements (Future)
+
 - **Configuration**: Add config file support for default models
 - **Logging**: Add structured logging for debugging
-- **Extended Features**: 
+- **Extended Features**:
   - Image analysis support
   - Conversation history
   - Custom system prompts
@@ -42,6 +48,7 @@
 The MCP Gemini CLI server is fully functional and ready for deployment.
 
 ## Known Issues
+
 - **None**: No known issues with current implementation
 - **External Dependency**: Requires Gemini CLI to be installed and configured
 - **Error Handling**: Graceful handling of CLI not found scenarios
@@ -49,16 +56,19 @@ The MCP Gemini CLI server is fully functional and ready for deployment.
 ## Evolution of Project Decisions
 
 ### Initial Planning
+
 - **Goal**: Create minimal MCP server for Gemini CLI
 - **Approach**: Use FastMCP for simplicity
 - **Scope**: Two basic tools with error handling
 
 ### Implementation Decisions
+
 - **FastMCP**: Proved excellent choice for rapid development
 - **Async Design**: Essential for non-blocking CLI operations
 - **Error Strategy**: User-friendly messages proved crucial
 
 ### Final Architecture
+
 - **Simple**: Clean, maintainable codebase
 - **Extensible**: Easy to add more tools
 - **Robust**: Comprehensive error handling
@@ -67,19 +77,23 @@ The MCP Gemini CLI server is fully functional and ready for deployment.
 ## Validation Results
 
 ### Functionality Testing
+
 - **Server Startup**: Successfully starts and runs
 - **Tool Registration**: Both tools properly registered
 - **Async Operations**: Non-blocking execution confirmed
 - **Error Handling**: Graceful failure with helpful messages
 
 ### Code Quality
+
 - **Linting**: Passes ruff checks
 - **Type Safety**: Full type annotations
 - **Documentation**: Clear docstrings and comments
 - **Testing**: Comprehensive test coverage
 
 ## Ready for Production
+
 The server is production-ready with:
+
 - ✅ Stable core functionality
 - ✅ Proper error handling
 - ✅ Good test coverage
