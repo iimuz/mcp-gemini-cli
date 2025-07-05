@@ -3,7 +3,9 @@ name = "mcp-gemini-cli"
 version = "1.0.0"
 description = "MCP server using gemini cli."
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+  "mcp[cli]>=1.0.0",
+]
 
 [project.scripts]
 
@@ -21,7 +23,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["zettelkasten_workflow*"]
+include = ["mcp_gemini_cli*"]
 
 [tool.ruff]
 # same as black
