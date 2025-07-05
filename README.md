@@ -52,15 +52,18 @@ uv run mcp dev mcp_gemini_cli/server.py
 The server provides two MCP tools:
 
 #### `call_gemini(prompt, model)`
+
 Send a prompt to Gemini CLI with the specified model.
 
 **Parameters:**
+
 - `prompt` (str): The text prompt to send to Gemini
 - `model` (str, optional): The Gemini model to use (default: "gemini-1.5-flash")
 
 **Returns:** The response from Gemini CLI
 
 #### `list_gemini_models()`
+
 List available Gemini models.
 
 **Returns:** List of available models
