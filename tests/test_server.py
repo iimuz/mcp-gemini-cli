@@ -1,7 +1,7 @@
 """Test cases for MCP Gemini CLI Server."""
 
 import pytest
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock, patch, ANY
 
 from mcp_gemini_cli.server import call_gemini, list_gemini_models
 
@@ -23,8 +23,8 @@ async def test_call_gemini_success():
             "-m",
             "gemini-1.5-flash",
             "Hello",
-            stdout=pytest.unittest.mock.ANY,
-            stderr=pytest.unittest.mock.ANY,
+            stdout=ANY,
+            stderr=ANY,
         )
 
 
@@ -66,6 +66,6 @@ async def test_list_gemini_models_success():
         mock_subprocess.assert_called_once_with(
             "gemini",
             "models",
-            stdout=pytest.unittest.mock.ANY,
-            stderr=pytest.unittest.mock.ANY,
+            stdout=ANY,
+            stderr=ANY,
         )

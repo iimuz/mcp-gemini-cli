@@ -9,5 +9,4 @@ set -o pipefail
 echo "setup project root directory"
 
 npm ci
-uv sync
-
+uv sync --extra dev
