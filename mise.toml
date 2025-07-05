@@ -1,0 +1,8 @@
+[tools]
+nodejs = "22"
+python = "3.11"
+uv = "latest"
+
+[env]
+mise.file = ".env"
+_.python.venv = { path = ".venv", create = true }

@@ -1,0 +1,62 @@
+[project]
+name = "mcp-gemini-cli"
+version = "1.0.0"
+description = "MCP server using gemini cli."
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+
+[project.optional-dependencies]
+dev = [
+  "mypy",
+  "pytest",
+  "pytest-asyncio",
+  "ruff",
+]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["zettelkasten_workflow*"]
+
+[tool.ruff]
+# same as black
+indent-width = 4
+line-length = 88
+
+extend-exclude = [
+  ".vscode",
+  "data",
+  "nexus_magi/api_gen/", # 自動生成されるファイルを除外
+]
+
+[tool.ruff.lint]
+# Allow lint for all enabled rules
+ignore = [
+  "D203", # `one-blank-line-before-class` (D203) and `no-blank-line-before-class` (D211) are incompatible
+  "D213", # `multi-line-summary-first-line` (D212) and `multi-line-summary-second-line` (D213) are incompatible.
+  # The following rules may cause conflicts when used with the formatter: `COM812`, `ISC001`.
+  "COM812",
+  "ISC001",
+  # `ノ` は日本語でコメントしているので無視する
+  "RUF003",
+]
+select = ["ALL"]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.per-file-ignores]
+# Tests can use assert statements and access private members for testing
+"tests/**/*.py" = ["S101", "SLF001"]
+
+[tool.ruff.format]
+indent-style = "space" # Like Black, indent with spaces, rather than tabs.
+line-ending = "auto" # Like Black, automatically detect the appropriate line ending.
+quote-style = "double" # Like Black, use double quotes for strings.
+skip-magic-trailing-comma = false # Like Black, respect magic trailing commas.

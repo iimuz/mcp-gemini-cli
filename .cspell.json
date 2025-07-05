@@ -1,0 +1,16 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [],
+  "dictionaries": [],
+  "ignorePaths": [
+    "**/.git/**",
+    "**/.mypy_cache/**",
+    "**/.ruff_cache/**",
+    "**/.venv/**",
+    "**/__pycache__/**",
+    "**/*.egg-info/**",
+    "**/node_modules/**",
+    "**/package-lock.json"
+  ]
+}

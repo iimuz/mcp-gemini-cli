@@ -1,0 +1,14 @@
+{
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "Bash(mise run format)",
+      "Bash(mise run lint)",
+      "Bash(mise run test)",
+      "Bash(uv run pytest:*)",
+      "Bash(uv run python -m pytest:*)",
+      "Bash(uv run ruff check:*)"
+    ],
+    "deny": []
+  }
+}
