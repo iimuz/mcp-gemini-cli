@@ -1,6 +1,7 @@
+"""MCP server for Gemini CLI integration."""
+
 import asyncio
 import subprocess
-from typing import Any
 
 from mcp.server.fastmcp import FastMCP
 
@@ -20,15 +21,15 @@ async def call_gemini(prompt: str, model: str = "gemini-1.5-flash") -> str:
             stderr=asyncio.subprocess.PIPE,
         )
         stdout, stderr = await result.communicate()
-        
+
         if result.returncode != 0:
             return f"Error: {stderr.decode()}"
-        
+
         return stdout.decode()
     except FileNotFoundError:
         return "Error: Gemini CLI not found. Please install it first."
-    except Exception as e:
-        return f"Error: {str(e)}"
+    except subprocess.SubprocessError as e:
+        return f"Error: {e!s}"
 
 
 @mcp.tool()
@@ -42,15 +43,15 @@ async def list_gemini_models() -> str:
             stderr=asyncio.subprocess.PIPE,
         )
         stdout, stderr = await result.communicate()
-        
+
         if result.returncode != 0:
             return f"Error: {stderr.decode()}"
-        
+
         return stdout.decode()
     except FileNotFoundError:
         return "Error: Gemini CLI not found. Please install it first."
-    except Exception as e:
-        return f"Error: {str(e)}"
+    except subprocess.SubprocessError as e:
+        return f"Error: {e!s}"
 
 
 if __name__ == "__main__":
