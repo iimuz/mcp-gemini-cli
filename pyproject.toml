@@ -12,6 +12,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
   "mypy",
+  "pydantic>=2.11.7",
   "pytest",
   "pytest-asyncio",
   "ruff",
