@@ -1,7 +1,7 @@
 {
   "version": "0.2",
   "language": "en",
-  "words": [],
+  "words": ["asyncio", "fastmcp", "mypy", "pydantic", "pytest", "setuptools", "venv"],
   "dictionaries": [],
   "ignorePaths": [
     "**/.git/**",
@@ -11,6 +11,8 @@
     "**/__pycache__/**",
     "**/*.egg-info/**",
     "**/node_modules/**",
-    "**/package-lock.json"
+    "**/package-lock.json",
+    "CLAUDE.md",
+    "memory-bank/**"
   ]
 }
