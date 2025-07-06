@@ -11,10 +11,10 @@ mcp = FastMCP("Gemini CLI")
 @mcp.tool()
 async def call_gemini(prompt: str, model: str = "gemini-2.5-flash") -> str:
     """Call Gemini CLI with the given prompt and model."""
-    GEMINI_CLI_PATH = f"gemini -m {model} -p \"{prompt}\""
+    gemini_cli_path = f'gemini -m {model} -p "{prompt}"'
     try:
         result = await asyncio.create_subprocess_shell(
-            GEMINI_CLI_PATH,
+            gemini_cli_path,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
             stdin=asyncio.subprocess.DEVNULL,
@@ -24,7 +24,7 @@ async def call_gemini(prompt: str, model: str = "gemini-2.5-flash") -> str:
         if result.returncode != 0:
             return f"Error: {stderr.decode()}"
 
-        return stdout.decode() if stdout else ''
+        return stdout.decode() if stdout else ""
     except FileNotFoundError:
         return "Error: Gemini CLI not found. Please install it first."
     except subprocess.SubprocessError as e:
