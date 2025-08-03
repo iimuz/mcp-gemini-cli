@@ -169,14 +169,18 @@ async def test_call_gemini_with_custom_cwd_success(
 
 
 @pytest.mark.asyncio
-async def test_call_gemini_custom_cwd_not_found(monkeypatch: pytest.MonkeyPatch) -> None:
+async def test_call_gemini_custom_cwd_not_found(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     """Test call_gemini with non-existent custom working directory."""
     monkeypatch.setenv("GEMINI_CLI_CWD", "/nonexistent/directory")
 
     with patch("pathlib.Path.exists", return_value=False):
         result = await call_gemini("Hello")
 
-        expected_msg = "Error: Custom working directory not found: /nonexistent/directory"
+        expected_msg = (
+            "Error: Custom working directory not found: /nonexistent/directory"
+        )
         assert result == expected_msg
 
 
@@ -193,5 +197,7 @@ async def test_call_gemini_custom_cwd_not_directory(
     ):
         result = await call_gemini("Hello")
 
-        expected_msg = "Error: Custom working directory is not a directory: /path/to/file.txt"
+        expected_msg = (
+            "Error: Custom working directory is not a directory: /path/to/file.txt"
+        )
         assert result == expected_msg

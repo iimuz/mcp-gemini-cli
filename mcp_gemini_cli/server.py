@@ -24,7 +24,7 @@ def _validate_custom_gemini_path(custom_path: str) -> str | None:
 
 def _get_gemini_cwd() -> tuple[str | None, str | None]:
     """Get Gemini CLI working directory from environment variable.
-    
+
     Returns (cwd, error) tuple.
     """
     custom_cwd = os.environ.get("GEMINI_CLI_CWD")
@@ -32,7 +32,10 @@ def _get_gemini_cwd() -> tuple[str | None, str | None]:
         if not Path(custom_cwd).exists():
             return None, f"Error: Custom working directory not found: {custom_cwd}"
         if not Path(custom_cwd).is_dir():
-            return None, f"Error: Custom working directory is not a directory: {custom_cwd}"
+            return (
+                None,
+                f"Error: Custom working directory is not a directory: {custom_cwd}",
+            )
         return custom_cwd, None
     return None, None
 
@@ -76,9 +79,11 @@ async def call_gemini(prompt: str, model: str = "gemini-2.5-flash") -> str:
         return stdout.decode() if stdout else ""
     except FileNotFoundError:
         custom_path = os.environ.get("GEMINI_CLI_PATH")
-        if custom_path:
-            return f"Error: Custom Gemini CLI not found: {custom_path}"
-        return "Error: Gemini CLI not found. Please install it first."
+        return (
+            f"Error: Custom Gemini CLI not found: {custom_path}"
+            if custom_path
+            else "Error: Gemini CLI not found. Please install it first."
+        )
     except subprocess.SubprocessError as e:
         return f"Error: {e!s}"
 

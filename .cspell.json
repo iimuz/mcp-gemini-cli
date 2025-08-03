@@ -1,7 +1,16 @@
 {
   "version": "0.2",
   "language": "en",
-  "words": ["asyncio", "fastmcp", "mypy", "pydantic", "pytest", "setuptools", "venv"],
+  "words": [
+    "asyncio",
+    "fastmcp",
+    "iimuz",
+    "mypy",
+    "pydantic",
+    "pytest",
+    "setuptools",
+    "venv"
+  ],
   "dictionaries": [],
   "ignorePaths": [
     "**/.git/**",
