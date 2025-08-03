@@ -6,7 +6,10 @@ A Model Context Protocol (MCP) server that provides a bridge to the Gemini CLI t
 
 - **Call Gemini CLI**: Send prompts to Gemini with custom model selection
 - **List Models**: Get available Gemini models
-- **Error Handling**: Graceful handling of CLI tool availability
+- **Custom Path Support**: Configure custom Gemini CLI installation paths
+- **Working Directory Control**: Set custom working directories for execution
+- **mise Integration**: Full support for mise-managed Gemini CLI installations
+- **Error Handling**: Graceful handling of CLI tool availability and path validation
 - **Async Operations**: Non-blocking operations for better performance
 
 ## Installation
@@ -14,6 +17,7 @@ A Model Context Protocol (MCP) server that provides a bridge to the Gemini CLI t
 ### Prerequisites
 
 1. **Gemini CLI**: Install and configure the Gemini CLI tool
+
    ```bash
    # Follow Google's installation instructions for Gemini CLI
    # Ensure it's in your PATH and configured with API keys
@@ -46,6 +50,82 @@ python -m mcp_gemini_cli
 # Or using MCP CLI (development mode)
 uv run mcp dev mcp_gemini_cli/server.py
 ```
+
+### MCP Client Configuration
+
+#### Claude Desktop Configuration
+
+Add the following to your Claude Desktop configuration file:
+
+```json
+{
+  "mcpServers": {
+    "gemini": {
+      "command": "python",
+      "args": ["-m", "mcp_gemini_cli"],
+      "env": {
+        "GEMINI_CLI_PATH": "/path/to/gemini",
+        "GEMINI_CLI_CWD": "/path/to/working/directory"
+      }
+    }
+  }
+}
+```
+
+#### Environment Variables
+
+The server supports the following environment variables for customization:
+
+- **GEMINI_CLI_PATH** (optional): Custom path to Gemini CLI executable
+  - If not set: Uses default `gemini` command from system PATH
+  - If set: Uses the specified path (must exist and be executable)
+
+- **GEMINI_CLI_CWD** (optional): Custom working directory for Gemini CLI execution
+  - If not set: Uses the parent process's current working directory
+  - If set: Changes to the specified directory before executing Gemini CLI
+
+#### Configuration for mise-managed Gemini CLI
+
+If you're using mise to manage your Gemini CLI installation, create a wrapper script:
+
+1. Create `gemini-wrapper.sh`:
+
+   ```bash
+   #!/bin/bash
+   eval "$(mise activate bash)"
+   gemini "$@"
+   ```
+
+2. Make it executable:
+
+   ```bash
+   chmod +x gemini-wrapper.sh
+   ```
+
+3. Configure Claude Desktop:
+   ```json
+   {
+     "mcpServers": {
+       "gemini": {
+         "command": "uv",
+         "args": [
+           "run",
+           "--directory",
+           "/absolute/path/to/mcp-gemini-cli",
+           "--with",
+           "mcp[cli]",
+           "mcp",
+           "run",
+           "mcp_gemini_cli/server.py"
+         ],
+         "env": {
+           "GEMINI_CLI_PATH": "/absolute/path/mcp-gemini-cli/gemini-wrapper.sh",
+           "GEMINI_CLI_CWD": "/absolute/path/working/directory"
+         }
+       }
+     }
+   }
+   ```
 
 ### Available Tools
 
