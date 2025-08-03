@@ -6,6 +6,16 @@ The MCP Gemini CLI server has been successfully implemented and is fully functio
 
 ## Recent Changes
 
+### Environment Variable Support Added (2025-08-02)
+
+1. **Custom Path Support**: Added `GEMINI_CLI_PATH` environment variable support
+2. **Working Directory Support**: Added `GEMINI_CLI_CWD` environment variable support
+3. **mise Integration**: Created wrapper script for mise-managed Gemini CLI
+4. **Path Validation**: Comprehensive validation for custom paths and directories
+5. **Enhanced Error Handling**: Clear error messages for all validation failures
+6. **Updated Testing**: Expanded test suite to 11 test cases covering all scenarios
+7. **Documentation**: Updated CLAUDE.md with complete configuration examples
+
 ### Implementation Completed (2025-07-05)
 
 1. **Core Server**: Created FastMCP-based server with two tools
@@ -16,8 +26,8 @@ The MCP Gemini CLI server has been successfully implemented and is fully functio
 
 ## Current Work Focus
 
-- **Status**: Project implementation complete
-- **Next Steps**: Ready for user testing and deployment
+- **Status**: Environment variable enhancement complete with mise integration
+- **Next Steps**: Ready for user testing with custom paths, working directories, and mise-managed tools
 - **Maintenance**: Monitor for user feedback and potential enhancements
 
 ## Active Decisions and Considerations

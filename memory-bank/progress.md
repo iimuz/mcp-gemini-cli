@@ -8,7 +8,9 @@
 - **Tools Implementation**: Two functional tools implemented:
   - `call_gemini(prompt, model)`: Calls Gemini CLI with specified prompt and model
   - `list_gemini_models()`: Lists available Gemini models
-- **Error Handling**: Comprehensive error handling for all scenarios
+- **Environment Variable Support**: `GEMINI_CLI_PATH` for custom Gemini CLI paths
+- **Path Validation**: Comprehensive validation for custom paths (existence, executability)
+- **Error Handling**: Comprehensive error handling for all scenarios including custom paths
 - **Async Operations**: Non-blocking subprocess calls work correctly
 
 ### Package Structure
@@ -19,9 +21,10 @@
 
 ### Testing
 
-- **Test Suite**: Basic test coverage with async support
-- **Mocking**: Proper mocking of subprocess calls
-- **Error Scenarios**: Tests for both success and failure cases
+- **Test Suite**: Comprehensive test coverage with async support
+- **Environment Variable Testing**: Full coverage of custom path scenarios
+- **Mocking**: Proper mocking of subprocess calls and filesystem operations
+- **Error Scenarios**: Tests for both success and failure cases including path validation
 
 ### Development Setup
 

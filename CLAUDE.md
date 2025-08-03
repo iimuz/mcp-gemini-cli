@@ -89,6 +89,76 @@ uv run mcp dev mcp_gemini_cli/server.py
 - **External**: Requires Gemini CLI to be installed and configured
 - **Python**: FastMCP framework (`mcp[cli]>=1.0.0`)
 
+## Configuration
+
+### Environment Variables
+
+The server supports the following environment variables for customization:
+
+#### GEMINI_CLI_PATH
+
+Set a custom path to the Gemini CLI executable. Useful when Gemini CLI is installed in a non-standard location or when using multiple versions.
+
+**MCP Client Configuration Example:**
+
+```json
+{
+  "mcpServers": {
+    "gemini": {
+      "command": "python",
+      "args": ["-m", "mcp_gemini_cli"],
+      "env": {
+        "GEMINI_CLI_PATH": "/custom/path/to/gemini"
+      }
+    }
+  }
+}
+```
+
+**Behavior:**
+
+- If `GEMINI_CLI_PATH` is set: Uses the specified path to call Gemini CLI
+- If not set: Uses default `gemini` command from system PATH
+- Path validation: Checks if the specified path exists and is executable
+
+**Error Handling:**
+
+- Invalid path: Returns clear error message with the problematic path
+- Non-executable: Returns error message indicating permission issues
+- Not found: Distinguishes between custom path and default command errors
+
+#### GEMINI_CLI_CWD
+
+Set a custom working directory for Gemini CLI execution. Useful when running Gemini CLI in a specific project context or when relative paths are required.
+
+**Behavior:**
+
+- If `GEMINI_CLI_CWD` is set: Changes to the specified directory before executing Gemini CLI
+- If not set: Uses the parent process's current working directory
+- Path validation: Checks if the specified path exists and is a directory
+
+**Error Handling:**
+
+- Directory not found: Returns clear error message with the problematic path
+- Not a directory: Returns error message indicating the path is not a directory
+
+**Combined Configuration Example:**
+
+```json
+{
+  "mcpServers": {
+    "gemini": {
+      "command": "python",
+      "args": ["-m", "mcp_gemini_cli"],
+      "env": {
+        "GEMINI_CLI_PATH": "/path/to/gemini-wrapper.sh",
+        "GEMINI_CLI_CWD": "/Users/username/projects/target-project"
+      }
+    }
+  }
+}
+```
+
 ## Available Tools
 
 The server provides two MCP tools:
